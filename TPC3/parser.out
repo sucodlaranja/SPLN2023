@@ -1,0 +1,307 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Dic
+Rule 1     Dic -> E
+Rule 2     E -> Categoria LINHA_B Linguas Genero LINHA_B DIVISOR LINHA_B E
+Rule 3     E -> Categoria LINHA_B Linguas LINHA_B Genero LINHA_B DIVISOR
+Rule 4     Categoria -> CATEGORIA : Items
+Rule 5     Items -> [ Item ]
+Rule 6     Item -> ID
+Rule 7     Item -> ID , Item
+Rule 8     Genero -> GENERO : ID
+Rule 9     Linguas -> ID_LING : ID LINHA_B Linguas
+Rule 10    Linguas -> ID_LING : ID LINHA_B
+
+Terminals, with rules where they appear
+
+,                    : 7
+:                    : 4 8 9 10
+CATEGORIA            : 4
+DIVISOR              : 2 3
+GENERO               : 8
+ID                   : 6 7 8 9 10
+ID_LING              : 9 10
+LINHA_B              : 2 2 2 3 3 3 9 10
+[                    : 5
+]                    : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+Categoria            : 2 3
+Dic                  : 0
+E                    : 1 2
+Genero               : 2 3
+Item                 : 5 7
+Items                : 4
+Linguas              : 2 3 9
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Dic
+    (1) Dic -> . E
+    (2) E -> . Categoria LINHA_B Linguas Genero LINHA_B DIVISOR LINHA_B E
+    (3) E -> . Categoria LINHA_B Linguas LINHA_B Genero LINHA_B DIVISOR
+    (4) Categoria -> . CATEGORIA : Items
+
+    CATEGORIA       shift and go to state 4
+
+    Dic                            shift and go to state 1
+    E                              shift and go to state 2
+    Categoria                      shift and go to state 3
+
+state 1
+
+    (0) S' -> Dic .
+
+
+
+state 2
+
+    (1) Dic -> E .
+
+    $end            reduce using rule 1 (Dic -> E .)
+
+
+state 3
+
+    (2) E -> Categoria . LINHA_B Linguas Genero LINHA_B DIVISOR LINHA_B E
+    (3) E -> Categoria . LINHA_B Linguas LINHA_B Genero LINHA_B DIVISOR
+
+    LINHA_B         shift and go to state 5
+
+
+state 4
+
+    (4) Categoria -> CATEGORIA . : Items
+
+    :               shift and go to state 6
+
+
+state 5
+
+    (2) E -> Categoria LINHA_B . Linguas Genero LINHA_B DIVISOR LINHA_B E
+    (3) E -> Categoria LINHA_B . Linguas LINHA_B Genero LINHA_B DIVISOR
+    (9) Linguas -> . ID_LING : ID LINHA_B Linguas
+    (10) Linguas -> . ID_LING : ID LINHA_B
+
+    ID_LING         shift and go to state 8
+
+    Linguas                        shift and go to state 7
+
+state 6
+
+    (4) Categoria -> CATEGORIA : . Items
+    (5) Items -> . [ Item ]
+
+    [               shift and go to state 10
+
+    Items                          shift and go to state 9
+
+state 7
+
+    (2) E -> Categoria LINHA_B Linguas . Genero LINHA_B DIVISOR LINHA_B E
+    (3) E -> Categoria LINHA_B Linguas . LINHA_B Genero LINHA_B DIVISOR
+    (8) Genero -> . GENERO : ID
+
+    LINHA_B         shift and go to state 11
+    GENERO          shift and go to state 13
+
+    Genero                         shift and go to state 12
+
+state 8
+
+    (9) Linguas -> ID_LING . : ID LINHA_B Linguas
+    (10) Linguas -> ID_LING . : ID LINHA_B
+
+    :               shift and go to state 14
+
+
+state 9
+
+    (4) Categoria -> CATEGORIA : Items .
+
+    LINHA_B         reduce using rule 4 (Categoria -> CATEGORIA : Items .)
+
+
+state 10
+
+    (5) Items -> [ . Item ]
+    (6) Item -> . ID
+    (7) Item -> . ID , Item
+
+    ID              shift and go to state 16
+
+    Item                           shift and go to state 15
+
+state 11
+
+    (3) E -> Categoria LINHA_B Linguas LINHA_B . Genero LINHA_B DIVISOR
+    (8) Genero -> . GENERO : ID
+
+    GENERO          shift and go to state 13
+
+    Genero                         shift and go to state 17
+
+state 12
+
+    (2) E -> Categoria LINHA_B Linguas Genero . LINHA_B DIVISOR LINHA_B E
+
+    LINHA_B         shift and go to state 18
+
+
+state 13
+
+    (8) Genero -> GENERO . : ID
+
+    :               shift and go to state 19
+
+
+state 14
+
+    (9) Linguas -> ID_LING : . ID LINHA_B Linguas
+    (10) Linguas -> ID_LING : . ID LINHA_B
+
+    ID              shift and go to state 20
+
+
+state 15
+
+    (5) Items -> [ Item . ]
+
+    ]               shift and go to state 21
+
+
+state 16
+
+    (6) Item -> ID .
+    (7) Item -> ID . , Item
+
+    ]               reduce using rule 6 (Item -> ID .)
+    ,               shift and go to state 22
+
+
+state 17
+
+    (3) E -> Categoria LINHA_B Linguas LINHA_B Genero . LINHA_B DIVISOR
+
+    LINHA_B         shift and go to state 23
+
+
+state 18
+
+    (2) E -> Categoria LINHA_B Linguas Genero LINHA_B . DIVISOR LINHA_B E
+
+    DIVISOR         shift and go to state 24
+
+
+state 19
+
+    (8) Genero -> GENERO : . ID
+
+    ID              shift and go to state 25
+
+
+state 20
+
+    (9) Linguas -> ID_LING : ID . LINHA_B Linguas
+    (10) Linguas -> ID_LING : ID . LINHA_B
+
+    LINHA_B         shift and go to state 26
+
+
+state 21
+
+    (5) Items -> [ Item ] .
+
+    LINHA_B         reduce using rule 5 (Items -> [ Item ] .)
+
+
+state 22
+
+    (7) Item -> ID , . Item
+    (6) Item -> . ID
+    (7) Item -> . ID , Item
+
+    ID              shift and go to state 16
+
+    Item                           shift and go to state 27
+
+state 23
+
+    (3) E -> Categoria LINHA_B Linguas LINHA_B Genero LINHA_B . DIVISOR
+
+    DIVISOR         shift and go to state 28
+
+
+state 24
+
+    (2) E -> Categoria LINHA_B Linguas Genero LINHA_B DIVISOR . LINHA_B E
+
+    LINHA_B         shift and go to state 29
+
+
+state 25
+
+    (8) Genero -> GENERO : ID .
+
+    LINHA_B         reduce using rule 8 (Genero -> GENERO : ID .)
+
+
+state 26
+
+    (9) Linguas -> ID_LING : ID LINHA_B . Linguas
+    (10) Linguas -> ID_LING : ID LINHA_B .
+    (9) Linguas -> . ID_LING : ID LINHA_B Linguas
+    (10) Linguas -> . ID_LING : ID LINHA_B
+
+    LINHA_B         reduce using rule 10 (Linguas -> ID_LING : ID LINHA_B .)
+    GENERO          reduce using rule 10 (Linguas -> ID_LING : ID LINHA_B .)
+    ID_LING         shift and go to state 8
+
+    Linguas                        shift and go to state 30
+
+state 27
+
+    (7) Item -> ID , Item .
+
+    ]               reduce using rule 7 (Item -> ID , Item .)
+
+
+state 28
+
+    (3) E -> Categoria LINHA_B Linguas LINHA_B Genero LINHA_B DIVISOR .
+
+    $end            reduce using rule 3 (E -> Categoria LINHA_B Linguas LINHA_B Genero LINHA_B DIVISOR .)
+
+
+state 29
+
+    (2) E -> Categoria LINHA_B Linguas Genero LINHA_B DIVISOR LINHA_B . E
+    (2) E -> . Categoria LINHA_B Linguas Genero LINHA_B DIVISOR LINHA_B E
+    (3) E -> . Categoria LINHA_B Linguas LINHA_B Genero LINHA_B DIVISOR
+    (4) Categoria -> . CATEGORIA : Items
+
+    CATEGORIA       shift and go to state 4
+
+    Categoria                      shift and go to state 3
+    E                              shift and go to state 31
+
+state 30
+
+    (9) Linguas -> ID_LING : ID LINHA_B Linguas .
+
+    LINHA_B         reduce using rule 9 (Linguas -> ID_LING : ID LINHA_B Linguas .)
+    GENERO          reduce using rule 9 (Linguas -> ID_LING : ID LINHA_B Linguas .)
+
+
+state 31
+
+    (2) E -> Categoria LINHA_B Linguas Genero LINHA_B DIVISOR LINHA_B E .
+
+    $end            reduce using rule 2 (E -> Categoria LINHA_B Linguas Genero LINHA_B DIVISOR LINHA_B E .)
+

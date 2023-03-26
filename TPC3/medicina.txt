@@ -1,0 +1,29 @@
+categoria: [ Anatomía ]
+es: ala
+en: wing
+pt: asa
+la: ala
+ga: á
+género: feminino
+---
+categoria: [ Fisioloxía ]
+es: a término
+en: full term
+pt: a termo
+ga: a termo
+género: masculino
+---
+categoria: [ Terapéutica ]
+es: abordaje
+en: approach
+pt: abordagem
+ga: abordaxe
+género: feminino
+---
+categoria: [ Semioloxía ]
+es: absceso
+en: abscess
+pt: abscesso
+ga: absceso
+género: masculino
+---
